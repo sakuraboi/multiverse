@@ -1,0 +1,28 @@
+<h1>admin</h1>
+<a href ="voegproduct.inc.php">voeg product toe</a>
+<a href ="veranderproduct.php">verander product</a>
+<a href="delete.inc.php">verwijder product</a>
+<?php
+$tableheader = false;
+        $html = "";
+        $html .="<table>";
+
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            if ($tableheader == false) {
+                $html .= "<tr>";
+                foreach ($row as $key => $value) {
+                    $html .= "<th>$key</th>";
+                }
+                $html .="</tr>";
+                $tableheader = true;
+            }
+            $html .= "<tr>";
+            foreach ($row as $value) {
+                $html .="<td>$value</td>";
+            }
+            $html .="<td><button>Read</button></td>";//onclick select from * where id =. $id
+            $html .="</tr>";
+        }
+        $html .= "</table>";
+        return $html;
+ ?>
